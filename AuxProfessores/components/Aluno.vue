@@ -7,7 +7,10 @@
 <script>
 export default {
   props: {
-    aluno: Object
+    aluno: {
+      type: Object,
+      required: true
+    }
   }
 }
 </script>

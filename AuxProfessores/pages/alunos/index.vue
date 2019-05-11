@@ -1,13 +1,21 @@
 <template>
-  <b-container>
-    <div>
-      <aluno
-        v-for="(aluno, index) in alunos"
-        :key="index"
-        :aluno="aluno"
-      ></aluno>
+  <b-container fluid class="col-md-3">
+    <div class="mb-2">
+      <aluno v-for="(item, index) in alunos" :key="index" :aluno="item"></aluno>
     </div>
-    <nuxt-link to="/" class="button--grey">Voltar</nuxt-link>
+    <b-button class="primary mb-2" @click="exibeForm">Novo aluno</b-button>
+
+    <b-form v-if="mostrarForm">
+      <b-form-group id="nome" label="Nome do aluno">
+        <b-form-input id="nome-input" v-model="aluno.nome"></b-form-input>
+      </b-form-group>
+      <b-form-group id="login" label="Login do aluno">
+        <b-form-input id="login-input" v-model="aluno.login"></b-form-input>
+      </b-form-group>
+      <b-button id="cadastrar-aluno" class="mb-2">Criar</b-button>
+    </b-form>
+
+    <nuxt-link to="/">Voltar</nuxt-link>
   </b-container>
 </template>
 
@@ -19,6 +27,8 @@ export default {
   components: { Aluno },
   data() {
     return {
+      aluno: {},
+      mostrarForm: false,
       alunos: [
         {
           nome: 'Rolf Zambon',
@@ -33,6 +43,12 @@ export default {
           login: 'zefranca'
         }
       ]
+    }
+  },
+  methods: {
+    exibeForm() {
+      this.mostrarForm = !this.mostrarForm
+      this.aluno = {}
     }
   }
 }
