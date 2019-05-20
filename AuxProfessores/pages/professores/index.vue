@@ -6,12 +6,16 @@
           v-for="(item, index) in professores"
           :key="index"
           :professor="item"
-          @abrirAvisos="$refs.aviso.show()"
+          @abrirAvisos="abrirModalAviso"
         ></professor>
       </div>
     </section>
 
-    <b-modal id="modal-aviso" ref="aviso"> </b-modal>
+    <modal-aviso
+      v-if="professorDoAviso"
+      ref="aviso"
+      :professor="professorDoAviso"
+    ></modal-aviso>
 
     <b-button class="primary mb-2" @click="exibeForm">Novo professor</b-button>
 
@@ -25,19 +29,21 @@
       <b-button id="cadastrar-professor" class="mb-2">Criar</b-button>
     </b-form>
 
-    <nuxt-link to="/">Voltar</nuxt-link>
+    <nuxt-link to="/" class="button--grey">Voltar</nuxt-link>
   </b-container>
 </template>
 
 <script>
 import Professor from '~/components/Professor.vue'
+import ModalAviso from '~/components/ModalAviso.vue'
 
 export default {
   name: 'Professores',
-  components: { Professor },
+  components: { Professor, ModalAviso },
   data() {
     return {
       professor: {},
+      professorDoAviso: {},
       mostrarForm: false,
       professores: [
         {
@@ -55,6 +61,10 @@ export default {
     exibeForm() {
       this.mostrarForm = !this.mostrarForm
       this.professor = {}
+    },
+    abrirModalAviso(professor) {
+      this.professorDoAviso = professor
+      this.$refs.aviso.show()
     }
   }
 }

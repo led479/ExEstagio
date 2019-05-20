@@ -15,7 +15,7 @@ export default {
   },
   methods: {
     abrirModalAvisos() {
-      this.$emit('abrirAvisos')
+      this.$emit('abrirAvisos', this.professor)
     }
   }
 }

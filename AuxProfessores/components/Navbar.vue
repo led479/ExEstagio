@@ -9,7 +9,7 @@
         <b-navbar-nav>
           <b-nav-item to="/alunos">Alunos</b-nav-item>
           <b-nav-item to="/professores">Professores</b-nav-item>
-          <b-nav-item to="#">Disciplinas</b-nav-item>
+          <b-nav-item to="/disciplinas">Disciplinas</b-nav-item>
         </b-navbar-nav>
 
         <!-- Right aligned nav items -->

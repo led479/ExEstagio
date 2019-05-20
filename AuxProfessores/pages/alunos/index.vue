@@ -15,7 +15,7 @@
       <b-button id="cadastrar-aluno" class="mb-2">Criar</b-button>
     </b-form>
 
-    <nuxt-link to="/">Voltar</nuxt-link>
+    <nuxt-link to="/" class="button--grey">Voltar</nuxt-link>
   </b-container>
 </template>
 

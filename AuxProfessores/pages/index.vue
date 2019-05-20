@@ -1,26 +1,34 @@
 <template>
   <section class="container">
     <div>
-      <h1 class="title">
+      <h1>
         AuxProfessores
       </h1>
-      <h2 class="subtitle">
+      <h2>
         Meu projeto de notificações de notas e avisos
       </h2>
       <div class="links">
         <a
           href="https://github.com/nuxt/nuxt.js"
+          rel="noopener"
           target="_blank"
           class="button--grey"
           >GitHub do Nuxt.js</a
         >
         <a
           href="https://github.com/led479/ExEstagio"
+          rel="noopener"
           target="_blank"
           class="button--grey"
           >GitHub deste projeto</a
         >
         <nuxt-link class="button--grey" to="/alunos">Alunos</nuxt-link>
+        <nuxt-link class="button--grey" to="/professores"
+          >Professores</nuxt-link
+        >
+        <nuxt-link class="button--grey" to="/disciplinas"
+          >Disciplinas</nuxt-link
+        >
       </div>
     </div>
   </section>
