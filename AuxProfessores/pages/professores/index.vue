@@ -1,15 +1,13 @@
 <template>
   <b-container fluid class="col-md-3">
-    <section>
-      <div class="mb-2">
-        <professor
-          v-for="(item, index) in professores"
-          :key="index"
-          :professor="item"
-          @abrirAvisos="abrirModalAviso"
-        ></professor>
-      </div>
-    </section>
+    <div class="mb-3 mt-4">
+      <professor
+        v-for="(item, index) in professores"
+        :key="index"
+        :professor="item"
+        @abrirAvisos="abrirModalAviso"
+      ></professor>
+    </div>
 
     <modal-aviso
       v-if="professorDoAviso"

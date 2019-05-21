@@ -1,6 +1,6 @@
 <template>
   <b-container fluid class="col-md-3">
-    <div class="mb-2">
+    <div class="mb-3 mt-4">
       <disciplina
         v-for="(item, idx) in disciplinas"
         :key="idx"

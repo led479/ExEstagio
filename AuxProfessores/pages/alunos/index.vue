@@ -1,6 +1,6 @@
 <template>
   <b-container fluid class="col-md-3">
-    <div class="mb-2">
+    <div class="mb-3 mt-4">
       <aluno v-for="(item, index) in alunos" :key="index" :aluno="item"></aluno>
     </div>
     <b-button class="primary mb-2" @click="exibeForm">Novo aluno</b-button>

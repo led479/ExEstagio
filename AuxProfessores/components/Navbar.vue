@@ -1,6 +1,6 @@
 <template>
   <div>
-    <b-navbar toggleable="lg">
+    <b-navbar variant="dark" type="dark" toggleable="lg">
       <b-navbar-brand to="/">AuxProfessores</b-navbar-brand>
 
       <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
@@ -27,3 +27,5 @@
     </b-navbar>
   </div>
 </template>
+
+<style scoped></style>
