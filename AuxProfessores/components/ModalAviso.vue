@@ -1,11 +1,11 @@
 <template>
   <b-modal id="modal-aviso" ref="aviso" title="Criar aviso">
     <b-form-group id="texto" label="Aviso">
-      <b-form-input
+      <b-form-textarea
         id="texto-input"
         v-model="texto"
         placeholder="Insira o texto do aviso..."
-      ></b-form-input>
+      ></b-form-textarea>
     </b-form-group>
     <b-form-group label="Alunos que receberão o aviso">
       <b-form-checkbox-group

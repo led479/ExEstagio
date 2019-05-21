@@ -1,6 +1,7 @@
 <template>
   <b-card :title="aluno.nome" style="max-width: 20rem;">
     <b-card-text>{{ aluno.login }}</b-card-text>
+    <b-link @click="abrirModalMatricula">Matricular</b-link>
   </b-card>
 </template>
 
@@ -10,6 +11,11 @@ export default {
     aluno: {
       type: Object,
       required: true
+    }
+  },
+  methods: {
+    abrirModalMatricula() {
+      this.$emit('abrirMatriculas', this.aluno)
     }
   }
 }
