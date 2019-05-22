@@ -38,6 +38,7 @@ module.exports = {
     '@nuxtjs/axios',
     // Doc: https://bootstrap-vue.js.org/docs/
     'bootstrap-vue/nuxt',
+    '@nuxtjs/onesignal',
     '@nuxtjs/pwa'
   ],
   /*
@@ -45,6 +46,16 @@ module.exports = {
    */
   axios: {
     // See https://github.com/nuxt-community/axios-module#options
+  },
+
+  /*
+   ** OneSignal configuration
+   */
+  oneSignal: {
+    init: {
+      appId: '71c0c963-cf73-40aa-a46d-dc8d7fc173f0',
+      allowLocalhostAsSecureOrigin: true
+    }
   },
 
   /*
