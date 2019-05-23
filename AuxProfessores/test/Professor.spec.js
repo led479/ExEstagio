@@ -1,7 +1,5 @@
-import { mount } from '@vue/test-utils'
+import { mount, createLocalVue } from '@vue/test-utils'
 import Professor from '@/components/Professor.vue'
-
-import { createLocalVue } from '@vue/test-utils'
 import BootstrapVue from 'bootstrap-vue/es'
 
 const localVue = createLocalVue()

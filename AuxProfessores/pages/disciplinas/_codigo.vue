@@ -1,14 +1,16 @@
 <template>
-  <b-container fluid>
-    <h1>{{ disciplina.codigo }}</h1>
-    <h2>{{ disciplina.nome }}</h2>
-    <h3>{{ disciplina.professor.nome }}</h3>
-    <h5>Alunos:</h5>
-    <ul>
-      <li v-for="(aluno, idx) in disciplina.alunos" :key="idx">
-        {{ aluno.nome }}
-      </li>
-    </ul>
+  <b-container fluid class="col-md-6">
+    <h1>
+      <b-badge>{{ disciplina.codigo }}</b-badge> {{ disciplina.nome }}
+    </h1>
+    <h3>Professor: {{ disciplina.professor.nome }}</h3>
+    <b-card header="Alunos">
+      <b-list-group>
+        <b-list-group-item v-for="(aluno, idx) in disciplina.alunos" :key="idx">
+          {{ aluno.nome }}
+        </b-list-group-item>
+      </b-list-group>
+    </b-card>
   </b-container>
 </template>
 
@@ -35,7 +37,7 @@ export default {
       //   })
       this.disciplina = {
         codigo: this.codigo,
-        nome: 'Disciplina placeholder',
+        nome: 'Disciplina Exemplo Com Nome Grande',
         professor: {
           nome: 'Antônio Carlos Mariani',
           login: 'mariani'

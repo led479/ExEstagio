@@ -15,7 +15,8 @@
       :professor="professorDoAviso"
     ></modal-aviso>
 
-    <b-button class="primary mb-2" @click="exibeForm">Novo professor</b-button>
+    <b-button class="secondary" @click="exibeForm">Novo professor</b-button>
+    <b-link to="/" class="btn btn-secondary">Voltar</b-link>
 
     <b-form v-if="mostrarForm">
       <b-form-group id="nome" label="Nome do professor">
@@ -26,8 +27,6 @@
       </b-form-group>
       <b-button id="cadastrar-professor" class="mb-2">Criar</b-button>
     </b-form>
-
-    <nuxt-link to="/" class="button--grey">Voltar</nuxt-link>
   </b-container>
 </template>
 

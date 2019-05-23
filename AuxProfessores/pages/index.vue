@@ -22,13 +22,6 @@
           class="button--grey"
           >GitHub deste projeto</a
         >
-        <nuxt-link class="button--grey" to="/alunos">Alunos</nuxt-link>
-        <nuxt-link class="button--grey" to="/professores"
-          >Professores</nuxt-link
-        >
-        <nuxt-link class="button--grey" to="/disciplinas"
-          >Disciplinas</nuxt-link
-        >
       </div>
     </div>
   </section>

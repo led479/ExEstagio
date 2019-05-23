@@ -8,7 +8,8 @@
       ></disciplina>
     </div>
 
-    <b-button class="primary mb-2" @click="exibeForm">Nova disciplina</b-button>
+    <b-button class="secondary" @click="exibeForm">Nova disciplina</b-button>
+    <b-link to="/" class="btn btn-secondary">Voltar</b-link>
 
     <b-form v-if="mostrarForm">
       <b-form-group id="codigo" label="Código da disciplina">
@@ -22,8 +23,6 @@
       </b-form-group>
       <b-button id="cadastrar-disciplina" class="mb-2">Criar</b-button>
     </b-form>
-
-    <nuxt-link to="/" class="button--grey">Voltar</nuxt-link>
   </b-container>
 </template>
 
