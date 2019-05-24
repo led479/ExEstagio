@@ -1,6 +1,7 @@
 <template>
   <div>
     <navbar />
+    <breadcrumb />
     <nuxt />
   </div>
 </template>
@@ -62,31 +63,32 @@ html {
 
 <script>
 import Navbar from '~/components/Navbar.vue'
+import Breadcrumb from '~/components/Breadcrumb.vue'
 
 export default {
-  components: { Navbar },
+  components: { Navbar, Breadcrumb },
   mounted() {
-    // this.$OneSignal.push(() => {
-    //   this.$OneSignal.on('subscriptionChange', isSubscribed => {
-    //     this.$OneSignal.push(() => {
-    //       this.$OneSignal.getUserId(userId => {
-    //         if (isSubscribed) {
-    //           // this.$http.post(api_url/notificacoes, {
-    //           //   login: current_user.login,
-    //           //   onesignal_id: userId
-    //           // })
-    //           console.log('Inscreveu-se \n OneSignal User ID:', userId)
-    //         } else {
-    //           // this.$http.delete(api_url/notificacoes, {
-    //           //   login: current_user.login,
-    //           //   onesignal_id: userId
-    //           // })
-    //           console.log('Desinscreveu-se OneSignal User ID:', userId)
-    //         }
-    //       })
-    //     })
-    //   })
-    // })
+    this.$OneSignal.push(() => {
+      this.$OneSignal.on('subscriptionChange', isSubscribed => {
+        this.$OneSignal.push(() => {
+          this.$OneSignal.getUserId(userId => {
+            if (isSubscribed) {
+              // this.$http.post(api_url/notificacoes, {
+              //   login: current_user.login,
+              //   onesignal_id: userId
+              // })
+              console.log('Inscreveu-se \n OneSignal User ID:', userId)
+            } else {
+              // this.$http.delete(api_url/notificacoes, {
+              //   login: current_user.login,
+              //   onesignal_id: userId
+              // })
+              console.log('Desinscreveu-se OneSignal User ID:', userId)
+            }
+          })
+        })
+      })
+    })
   }
 }
 </script>

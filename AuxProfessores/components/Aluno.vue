@@ -1,6 +1,6 @@
 <template>
   <b-card :title="aluno.nome" style="max-width: 20rem;">
-    <b-card-text>{{ aluno.login }}</b-card-text>
+    <b-card-text>{{ aluno.matricula }}</b-card-text>
     <b-link @click="abrirModalMatricula">Matriculas</b-link>
   </b-card>
 </template>

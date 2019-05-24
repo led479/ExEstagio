@@ -22,10 +22,9 @@
       <b-form-group id="nome" label="Nome do aluno">
         <b-form-input id="nome-input" v-model="aluno.nome"></b-form-input>
       </b-form-group>
-      <b-form-group id="login" label="Login do aluno">
-        <b-form-input id="login-input" v-model="aluno.login"></b-form-input>
-      </b-form-group>
-      <b-button id="cadastrar-aluno" class="mb-2">Criar</b-button>
+      <b-button id="cadastrar-aluno" class="mb-2" @click="criarAluno"
+        >Criar</b-button
+      >
     </b-form>
   </b-container>
 </template>
@@ -42,23 +41,18 @@ export default {
       aluno: {},
       alunoDaMatricula: {},
       mostrarForm: false,
-      alunos: [
-        {
-          nome: 'Rolf Zambon',
-          login: 'led479'
-        },
-        {
-          nome: 'Lucas Andrade',
-          login: 'PyMountain'
-        },
-        {
-          nome: 'José França',
-          login: 'zefranca'
-        }
-      ]
+      alunos: []
     }
   },
+  created() {
+    this.buscaAlunos()
+  },
   methods: {
+    buscaAlunos() {
+      this.$axios.get('http://localhost:3001/api/alunos').then(response => {
+        this.alunos = response.data.data
+      })
+    },
     exibeForm() {
       this.mostrarForm = !this.mostrarForm
       this.aluno = {}
@@ -66,6 +60,14 @@ export default {
     abrirModalMatricula(aluno) {
       this.alunoDaMatricula = aluno
       this.$refs.matricula.show()
+    },
+    criarAluno() {
+      this.$axios
+        .post('http://localhost:3001/api/alunos', this.aluno)
+        .then(() => {
+          this.exibeForm()
+          this.buscaAlunos()
+        })
     }
   }
 }

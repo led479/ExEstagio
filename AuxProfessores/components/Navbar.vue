@@ -29,16 +29,5 @@
         </b-navbar-nav> -->
       </b-collapse>
     </b-navbar>
-    <b-breadcrumb :items="[capitalize(this.$route.name)]"></b-breadcrumb>
   </div>
 </template>
-
-<script>
-export default {
-  methods: {
-    capitalize(string) {
-      return string.charAt(0).toUpperCase() + string.slice(1)
-    }
-  }
-}
-</script>

@@ -59,15 +59,15 @@ export default {
       this.alunos = [
         {
           nome: 'Rolf Zambon',
-          login: 'led479'
+          matricula: 'led479'
         },
         {
           nome: 'Lucas Andrade',
-          login: 'PyMountain'
+          matricula: 'PyMountain'
         },
         {
           nome: 'José França',
-          login: 'zefranca'
+          matricula: 'zefranca'
         }
       ]
       this.preparaListaAlunos()
@@ -76,7 +76,7 @@ export default {
       this.alunos.forEach(aluno => {
         this.alunosCheckboxGroup.push({
           text: aluno.nome,
-          value: aluno.login
+          value: aluno.matricula
         })
       })
     },

@@ -45,15 +45,15 @@ export default {
         alunos: [
           {
             nome: 'Rolf Zambon',
-            login: 'led479'
+            matricula: 'led479'
           },
           {
             nome: 'Lucas Andrade',
-            login: 'PyMountain'
+            matricula: 'PyMountain'
           },
           {
             nome: 'José França',
-            login: 'zefranca'
+            matricula: 'zefranca'
           }
         ]
       }
