@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     buscaAlunos() {
-      this.$axios.get('http://localhost:3001/api/alunos').then(response => {
+      this.$axios.get('http://localhost:3000/api/alunos').then(response => {
         this.alunos = response.data.data
       })
     },
@@ -63,7 +63,7 @@ export default {
     },
     criarAluno() {
       this.$axios
-        .post('http://localhost:3001/api/alunos', this.aluno)
+        .post('http://localhost:3000/api/alunos', this.aluno)
         .then(() => {
           this.exibeForm()
           this.buscaAlunos()
