@@ -21,7 +21,9 @@ exports.index = function (req, res) {
 exports.new = function (req, res) {
   var aluno = new Aluno();
   aluno.nome = req.body.nome ? req.body.nome : aluno.nome;
-  aluno.matricula = "2019" + Math.floor((Math.random() * 100) + 1) + Math.floor((Math.random() * 100) + 1) + Math.floor((Math.random() * 10) + 1)
+  aluno.matricula = "2019" + Math.floor((Math.random() * 100) + 1) + Math.floor((Math.random() * 100) + 1) + Math.floor((Math.random() * 10) + 1);
+  aluno.senha = req.body.senha;
+  aluno.email = req.body.email;
 
   aluno.save(function (err) {
       if (err) {
@@ -57,9 +59,7 @@ exports.update = function (req, res) {
       res.send(err);
     }
     aluno.nome = req.body.nome ? req.body.nome : aluno.nome;
-    aluno.genero = req.body.genero;
     aluno.email = req.body.email;
-    aluno.telefone = req.body.telefone;
     aluno.save(function (err) {
       if (err){
         res.json(err);

@@ -1,11 +1,11 @@
 var mongoose = require('mongoose');
 // Setup schema
-var alunoSchema = mongoose.Schema({
+var professorSchema = mongoose.Schema({
   nome: {
     type: String,
     required: true
   },
-  matricula: {
+  login: {
     type: String,
     required: true
   },
@@ -19,8 +19,8 @@ var alunoSchema = mongoose.Schema({
   }
 });
 
-// Exporta o modelo do aluno
-var Aluno = module.exports = mongoose.model('aluno', alunoSchema);
+// Exporta o modelo do professor
+var Professor = module.exports = mongoose.model('professor', professorSchema);
 module.exports.get = function (callback, limit) {
-    Aluno.find(callback).limit(limit);
+    Professor.find(callback).limit(limit);
 }
