@@ -1,7 +1,7 @@
+require('dotenv').config()
 let express = require('express')
 let bodyParser = require('body-parser');
 let mongoose = require('mongoose');
-let configDB = require('./config/database.js')
 let cors = require('cors')
 
 let app = express();
@@ -13,8 +13,9 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
-
+console.log(process.env.API_URL)
 // Connect to Mongoose and set connection variable
+let configDB = require('./config/database.js')
 mongoose.connect(configDB.url);
 
 var db = mongoose.connection;

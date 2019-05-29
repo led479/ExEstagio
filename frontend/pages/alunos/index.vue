@@ -49,7 +49,7 @@ export default {
   },
   methods: {
     buscaAlunos() {
-      this.$axios.get('http://localhost:3000/api/alunos').then(response => {
+      this.$axios.get(`${process.env.API_URL}/alunos`).then(response => {
         this.alunos = response.data.data
       })
     },
@@ -62,12 +62,10 @@ export default {
       this.$refs.matricula.show()
     },
     criarAluno() {
-      this.$axios
-        .post('http://localhost:3000/api/alunos', this.aluno)
-        .then(() => {
-          this.exibeForm()
-          this.buscaAlunos()
-        })
+      this.$axios.post(`${process.env.API_URL}/alunos`, this.aluno).then(() => {
+        this.exibeForm()
+        this.buscaAlunos()
+      })
     }
   }
 }
