@@ -16,7 +16,15 @@ var professorSchema = mongoose.Schema({
   senha: {
     type: String,
     requires: true
-  }
+  },
+  disciplinas: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'disciplina'
+  }],
+  avisos: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'aviso'
+  }]
 });
 
 // Exporta o modelo do professor

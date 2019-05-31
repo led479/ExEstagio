@@ -4,51 +4,40 @@ Professor = require('../models/professorModel.js');
 exports.index = function (req, res) {
   Professor.get(function (err, professores) {
     if (err) {
-      res.json({
-        status: "error",
-        message: err,
-      });
+      res.status(404).json(err);
     }
-    res.json({
-      status: "success",
-      message: "Professores buscados com sucesso",
-      data: professores
-    });
+
+    res.status(200).json(professores);
   });
 };
 
 // Create
 exports.new = function (req, res) {
   var professor = new Professor();
-  professor.nome = req.body.nome ? req.body.nome : professor.nome;
+  professor.nome = req.body.nome;
   professor.login = req.body.login
   professor.senha = req.body.senha;
   professor.email = req.body.email;
+  professor.disciplinas = req.body.disciplinas;
+  professor.avisos = req.body.avisos;
 
   professor.save(function (err) {
-      if (err) {
-        res.json({
-          status:"error",
-          message: err
-        });
-      }
-      res.json({
-        message: 'Novo professor criado com sucesso!',
-        data: professor
-      });
+    if (err) {
+      res.status(422).json(err);
+    }
+    
+    res.status(200).json(professor);
   });
+  
 };
 
 // View
 exports.view = function (req, res) {
   Professor.findById(req.params.professor_id, function (err, professor) {
     if (err){
-      res.send(err);
+      res.status(404).send(err);
     }
-    res.json({
-      message: 'Carregando professor...',
-      data: professor
-    });
+    res.status(200).json(professor);
   });
 };
 
@@ -56,19 +45,21 @@ exports.view = function (req, res) {
 exports.update = function (req, res) {
   Professor.findById(req.params.professor_id, function (err, professor) {
     if (err){
-      res.send(err);
+      res.status(404).json(err)
     }
-    professor.nome = req.body.nome ? req.body.nome : professor.nome;
-    professor.email = req.body.email;
+    if (req.body.nome) professor.nome = req.body.nome;
+    if (req.body.login) professor.login = req.body.login;
+    if (req.body.senha) professor.senha = req.body.senha;
+    if (req.body.email) professor.email = req.body.email;
+    if (req.body.disciplinas) professor.disciplinas = req.body.disciplinas;
+    if (req.body.avisos) professor.avisos = req.body.avisos;
+
     professor.save(function (err) {
       if (err){
-        res.json(err);
+        res.status(422).json(err)
       }
 
-      res.json({
-        message: 'Professor atualizado',
-        data: professor
-      });
+      res.status(200).json(professor);
     });
   });
 };
@@ -77,11 +68,10 @@ exports.update = function (req, res) {
 exports.delete = function (req, res) {
   Professor.remove({_id: req.params.professor_id}, function (err, professor) {
     if (err){
-      res.send(err);
+      res.status(404).json(err);
     }
-    res.json({
-      status: "success",
-      message: 'Professor deletado'
-    });
+
+    res.status(200);
   });
+  
 };

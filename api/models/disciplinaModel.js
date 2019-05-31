@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+
 // Setup schema
 var disciplinaSchema = mongoose.Schema({
   nome: {
@@ -8,7 +9,19 @@ var disciplinaSchema = mongoose.Schema({
   codigo: {
     type: String,
     required: true
-  }
+  },
+  alunos: [{
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'aluno'
+  }],
+  professor: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'professor'
+  },
+  avaliacoes: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'avaliacao'
+  }]
 });
 
 // Exporta o modelo do disciplina

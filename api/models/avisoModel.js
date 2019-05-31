@@ -4,7 +4,16 @@ var avisoSchema = mongoose.Schema({
   texto: {
     type: String,
     required: true
-  }
+  },
+  professor: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'professor'
+  },
+  alunos: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'aluno'
+  }],
+
 });
 
 // Exporta o modelo do aviso

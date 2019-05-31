@@ -4,38 +4,28 @@ Aluno = require('../models/alunoModel.js');
 exports.index = function (req, res) {
   Aluno.get(function (err, alunos) {
     if (err) {
-      res.json({
-        status: "error",
-        message: err,
-      });
+      res.json(err);
     }
-    res.json({
-      status: "success",
-      message: "Alunos buscados com sucesso",
-      data: alunos
-    });
+    res.status(200).json(alunos);
   });
 };
 
 // Create
 exports.new = function (req, res) {
   var aluno = new Aluno();
-  aluno.nome = req.body.nome ? req.body.nome : aluno.nome;
+  aluno.nome = req.body.nome;
   aluno.matricula = "2019" + Math.floor((Math.random() * 100) + 1) + Math.floor((Math.random() * 100) + 1) + Math.floor((Math.random() * 10) + 1);
   aluno.senha = req.body.senha;
   aluno.email = req.body.email;
+  aluno.disciplinas = req.body.disciplinas;
+  aluno.avisos = req.body.avisos;
+  aluno.notas = req.body.notas;
 
   aluno.save(function (err) {
-      if (err) {
-        res.json({
-          status:"error",
-          message: err
-        });
-      }
-      res.json({
-        message: 'Novo aluno criado com sucesso!',
-        data: aluno
-      });
+    if (err) {
+      res.status(422).json(err);
+    }
+    res.status(200).json(aluno);
   });
 };
 
@@ -43,12 +33,9 @@ exports.new = function (req, res) {
 exports.view = function (req, res) {
   Aluno.findById(req.params.aluno_id, function (err, aluno) {
     if (err){
-      res.send(err);
+      res.status(404).send(err);
     }
-    res.json({
-      message: 'Carregando aluno...',
-      data: aluno
-    });
+    res.status(200).json(aluno);
   });
 };
 
@@ -56,19 +43,20 @@ exports.view = function (req, res) {
 exports.update = function (req, res) {
   Aluno.findById(req.params.aluno_id, function (err, aluno) {
     if (err){
-      res.send(err);
+      res.status(404).send(err);
     }
-    aluno.nome = req.body.nome ? req.body.nome : aluno.nome;
-    aluno.email = req.body.email;
+    if (req.body.nome) aluno.nome = req.body.nome
+    if (req.body.email) aluno.email = req.body.email
+    if (req.body.disciplinas) aluno.disciplinas = req.body.disciplinas
+    if (req.body.avisos) aluno.avisos = req.body.avisos
+    if (req.body.notas) aluno.notas = req.body.notas
+    
     aluno.save(function (err) {
       if (err){
         res.json(err);
       }
 
-      res.json({
-        message: 'Aluno atualizado',
-        data: aluno
-      });
+      res.status(200).json(aluno);
     });
   });
 };
@@ -77,11 +65,8 @@ exports.update = function (req, res) {
 exports.delete = function (req, res) {
   Aluno.remove({_id: req.params.aluno_id}, function (err, aluno) {
     if (err){
-      res.send(err);
+      res.status(404).send(err);
     }
-    res.json({
-      status: "success",
-      message: 'Aluno deletado'
-    });
+    res.status(200);
   });
 };

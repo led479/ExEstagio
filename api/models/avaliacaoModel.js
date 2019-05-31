@@ -4,7 +4,15 @@ var avaliacaoSchema = mongoose.Schema({
   nome: {
     type: String,
     required: true
-  }
+  },
+  disciplina: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'disciplina'
+  },
+  notas: [{
+    type: mongoose.Schema.ObjectId,
+    ref: 'nota'
+  }]
 });
 
 // Exporta o modelo do avaliacao

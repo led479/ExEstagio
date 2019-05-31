@@ -32,13 +32,13 @@ router.route('/professores/:professor_id')
 // aviso routes
 var avisoController = require('./controllers/avisoController');
 router.route('/avisos')
-    // .get(avisoController.index)
+    .get(avisoController.index)
     .post(avisoController.new);
 router.route('/avisos/:aviso_id')
-    .get(avisoController.view);
+    .get(avisoController.view)
     // .patch(avisoController.update)
     // .put(avisoController.update)
-    // .delete(avisoController.delete);
+    .delete(avisoController.delete);
 
 // disciplina routes
 var disciplinaController = require('./controllers/disciplinaController');
@@ -54,24 +54,24 @@ router.route('/disciplinas/:disciplina_id')
 // nota routes
 var notaController = require('./controllers/notaController');
 router.route('/notas')
-    // .get(notaController.index)
+    .get(notaController.index)
     .post(notaController.new);
 router.route('/notas/:nota_id')
-    .get(notaController.view);
-    // .patch(notaController.update)
-    // .put(notaController.update)
-    // .delete(notaController.delete);
+    .get(notaController.view)
+    .patch(notaController.update)
+    .put(notaController.update)
+    .delete(notaController.delete);
 
 // avaliacao routes
 var avaliacaoController = require('./controllers/avaliacaoController');
 router.route('/avaliacoes')
-    // .get(avaliacaoController.index)
+    .get(avaliacaoController.index)
     .post(avaliacaoController.new);
 router.route('/avaliacoes/:avaliacao_id')
-    .get(avaliacaoController.view);
-    // .patch(avaliacaoController.update)
-    // .put(avaliacaoController.update)
-    // .delete(avaliacaoController.delete);
+    .get(avaliacaoController.view)
+    .patch(avaliacaoController.update)
+    .put(avaliacaoController.update)
+    .delete(avaliacaoController.delete);
 
 
 // Export API routes

@@ -4,6 +4,14 @@ var notaSchema = mongoose.Schema({
   valor: {
     type: Number,
     required: true
+  },
+  avaliacao: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'avaliacao'
+  },
+  aluno: {
+    type: mongoose.Schema.ObjectId,
+    ref: 'aluno'
   }
 });
 
