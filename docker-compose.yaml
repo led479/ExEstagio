@@ -5,18 +5,22 @@ services:
       context: ./api
     ports:
       - "3000:3000"
-    depends_on:
-      - mongo
     volumes:
       - type: bind
         source: ./api
         target: /app
-  mongo:
-    image: mongo
+
+  api-graphql:
+    build:
+      context: ./api-graphql
     ports:
-      - "27017:27017"
+      - "3500:3500"
     volumes:
-      - data-volume:/data/db
+      - type: bind
+        source: ./api-graphql
+        target: /app
+
+
   frontend:
     build:
       context: ./frontend
@@ -26,6 +30,3 @@ services:
       - type: bind
         source: ./frontend
         target: /app
-
-volumes:
-  data-volume:

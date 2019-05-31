@@ -2,8 +2,8 @@
   <b-container fluid class="col-md-3">
     <div class="mb-3 mt-4">
       <aluno
-        v-for="(item, index) in alunos"
-        :key="index"
+        v-for="item in alunos"
+        :key="item._id"
         :aluno="item"
         @abrirMatriculas="abrirModalMatricula"
       ></aluno>
@@ -22,7 +22,7 @@
       <b-form-group id="nome" label="Nome do aluno">
         <b-form-input id="nome-input" v-model="aluno.nome"></b-form-input>
       </b-form-group>
-      <b-button id="cadastrar-aluno" class="mb-2" @click="criarAluno"
+      <b-button id="cadastrar-aluno" class="mb-2" @click="criaAluno"
         >Criar</b-button
       >
     </b-form>
@@ -44,13 +44,13 @@ export default {
       alunos: []
     }
   },
-  created() {
+  mounted() {
     this.buscaAlunos()
   },
   methods: {
     buscaAlunos() {
       this.$axios.get(`${process.env.API_URL}/alunos`).then(response => {
-        this.alunos = response.data.data
+        this.alunos = response.data
       })
     },
     exibeForm() {
@@ -61,7 +61,7 @@ export default {
       this.alunoDaMatricula = aluno
       this.$refs.matricula.show()
     },
-    criarAluno() {
+    criaAluno() {
       this.$axios.post(`${process.env.API_URL}/alunos`, this.aluno).then(() => {
         this.exibeForm()
         this.buscaAlunos()

@@ -13,7 +13,7 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 app.use(bodyParser.json());
-console.log(process.env.API_URL)
+
 // Connect to Mongoose and set connection variable
 let configDB = require('./config/database.js')
 mongoose.connect(configDB.url);

@@ -21,7 +21,9 @@
       <b-form-group id="nome" label="Nome da disciplina">
         <b-form-input id="nome-input" v-model="disciplina.nome"></b-form-input>
       </b-form-group>
-      <b-button id="cadastrar-disciplina" class="mb-2">Criar</b-button>
+      <b-button id="cadastrar-disciplina" class="mb-2" @click="criaDisciplina"
+        >Criar</b-button
+      >
     </b-form>
   </b-container>
 </template>
@@ -36,19 +38,26 @@ export default {
     return {
       mostrarForm: false,
       disciplina: {},
-      disciplinas: [
-        {
-          codigo: 'INE5614',
-          nome: 'Análise de Projeto de Sistemas'
-        },
-        {
-          codigo: 'ABC1234',
-          nome: 'Disciplina de Teste'
-        }
-      ]
+      disciplinas: []
     }
   },
+  mounted() {
+    this.buscaDisciplinas()
+  },
   methods: {
+    buscaDisciplinas() {
+      this.$axios.get(`${process.env.API_URL}/disciplinas`).then(response => {
+        this.disciplinas = response.data
+      })
+    },
+    criaDisciplina() {
+      this.$axios
+        .post(`${process.env.API_URL}/disciplinas`, this.disciplina)
+        .then(() => {
+          this.buscaDisciplinas()
+          this.exibeForm()
+        })
+    },
     exibeForm() {
       this.mostrarForm = !this.mostrarForm
       this.disciplina = {}
