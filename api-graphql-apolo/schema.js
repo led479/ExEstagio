@@ -3,6 +3,12 @@ import alunoModel from './models/aluno'
 import disciplinaModel from './models/disciplina'
 
 export const typeDefs = gql`
+
+  type Query {
+    alunos: [Aluno],
+    disciplinas: [Disciplina]
+  }
+  
   type Aluno {
     _id: ID,
     nome: String,
@@ -16,10 +22,7 @@ export const typeDefs = gql`
     alunos: [ID]
   }
 
-  type Query {
-    alunos: [Aluno],
-    disciplinas: [Disciplina]
-  }
+  
 `
 
 export const resolvers = {

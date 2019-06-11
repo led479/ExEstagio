@@ -22,6 +22,9 @@
       <b-form-group id="nome" label="Nome do aluno">
         <b-form-input id="nome-input" v-model="aluno.nome"></b-form-input>
       </b-form-group>
+      <b-form-group id="email" label="Email do aluno">
+        <b-form-input id="email-input" v-model="aluno.email"></b-form-input>
+      </b-form-group>
       <b-button id="cadastrar-aluno" class="mb-2" @click="criaAluno"
         >Criar</b-button
       >

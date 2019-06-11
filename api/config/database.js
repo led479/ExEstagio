@@ -1,3 +1,3 @@
 module.exports = {
-  'url' : "mongodb+srv://admin:admin@auxprofessores-s41vi.mongodb.net/test?retryWrites=true&w=majority"  
+  'url' : 'mongodb://localhost:27017/myapp'
 }

@@ -16,9 +16,10 @@ app.use(bodyParser.json());
 
 // Connect to Mongoose and set connection variable
 let configDB = require('./config/database.js')
-mongoose.connect(configDB.url);
+mongoose.connect(configDB.url, { useNewUrlParser: true });
+let db = mongoose.connection;
 
-var db = mongoose.connection;
+db.on('error', console.error.bind(console, 'connection error: '))
 
 let apiRoutes = require("./api-routes")
 app.use('/api', apiRoutes)
